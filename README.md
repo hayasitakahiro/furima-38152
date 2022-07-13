@@ -27,7 +27,7 @@
 | Column                 | Type   | Options     |
 | ---------------------- | ------ | ----------- |
 | product_name           | string | null: false |
-| product_description_id | integer |  null: false |
+| description_of_item    | text |  null: false |
 | category_id            | integer | null: false |
 | product_condition_id   | integer | null: false |
 | prefecture_id          | integer | null: false |
