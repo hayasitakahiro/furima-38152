@@ -27,15 +27,14 @@
 | Column                 | Type   | Options     |
 | ---------------------- | ------ | ----------- |
 | product_name           | string | null: false |
+| product_description_id | integer |  null: false |
 | category_id            | integer | null: false |
 | product_condition_id   | integer | null: false |
-| product_burden_id      | integer | null: false |
-| area                   | integer | null: false,foreign_key: true |
+| prefecture_id          | integer | null: false |
+| burden_of_shipping_charge_id      | integer | null: false |
 | shipping_day_id        | integer| null: false |
 | price                  | integer| null: false |
 | user                   | references ｜ null: false,foreign_key: true |
-| description_id         | integer |  null: false |
-| prefectures_id            | integer |  null: false |
 
 ### Association
 belongs_to :user
@@ -49,13 +48,13 @@ has_one :purchase_record
 
 | Column                 | Type   | Options     |
 | ---------------------- | ------ | ----------- |
-| post                   |string  | null: false |
+| postal_code            |string  | null: false |
 | city                   | string | null: false |
 | address                | string | null: false |
 | building_name          | string |
 | phone_number           | string | null: false |
 | purchase_record        |references｜null: false,foreign_key: true |
-| prefectures_id            | integer |  null: false |
+| prefecture_id         | integer |  null: false |
 ### Association
 
 
