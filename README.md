@@ -34,12 +34,12 @@
 | shipping_day_id        | integer| null: false |
 | price                  | integer| null: false |
 | user                   | references ｜ null: false,foreign_key: true |
-| description_id         | integer |  null: false |
+| description_item_id     | integer |  null: false |
 | prefectures            | integer |  null: false,foreign_key: true |
 
 ### Association
 belongs_to :user
-has_one : shipping_infomation
+has_one :purchase_records
 
 
 
@@ -55,12 +55,12 @@ has_one : shipping_infomation
 | building_name          | string |
 | phone_number           | string | null: false |
 | purchase_record        |references｜null: false,foreign_key: true |
-| prefectures            | integer |  null: false,foreign_key: true |
+| prefectures_id            | integer |  null: false |
 ### Association
 
 
 belongs_to :purchase_record
-belongs_to :item
+
 
 
 
@@ -76,5 +76,7 @@ belongs_to :item
 
 ### Association
 
- has_one :shipping_infomations
+ has_one :shipping_infomation
  belongs_to :user
+ belongs_to :item
+
