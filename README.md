@@ -44,7 +44,7 @@ has_one :purchase_record
 
 
 
-## shipping_infomation  テーブル
+## shipping_infomations  テーブル
 
 | Column                 | Type   | Options     |
 | ---------------------- | ------ | ----------- |
