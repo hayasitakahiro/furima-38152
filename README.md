@@ -34,12 +34,12 @@
 | shipping_day_id        | integer| null: false |
 | price                  | integer| null: false |
 | user                   | references ｜ null: false,foreign_key: true |
-| description_item_id     | integer |  null: false |
-| prefectures            | integer |  null: false,foreign_key: true |
+| description_id         | integer |  null: false |
+| prefectures_id            | integer |  null: false |
 
 ### Association
 belongs_to :user
-has_one :purchase_records
+has_one :purchase_record
 
 
 
@@ -79,4 +79,3 @@ belongs_to :purchase_record
  has_one :shipping_infomation
  belongs_to :user
  belongs_to :item
-
