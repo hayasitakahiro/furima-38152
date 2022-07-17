@@ -5,11 +5,9 @@ end
 
 
 
-
 private
 
-def message_params
-  params.require(:items).permit(:content, :image).merge(user_id: current_user.id)
+def items_params
+  params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
 end
-
 end
