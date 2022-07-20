@@ -11,7 +11,7 @@ describe '商品出品' do
       expect(@item).to be_valid
     end
   end
-
+  context '商品出品できない時' do
 it 'category_idに「---」が選択されている場合は出品できない' do
   @item.category_id = '1'
   @item.valid?
@@ -52,10 +52,11 @@ it 'priceが300円未満では出品できない' do
   @item.valid?
    expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
 end
-it 'priceが9_999_999円を超えると出品できない' do
-  @item.price = '99_999_999'
+it 'priceが9999999円を超えると出品できない' do
+  @item.price = '10000000'
   @item.valid?
-   expect(@item.errors.full_messages).to include "Price must be an integer"
+  binding.pry
+   expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
 end
 
 it 'product_nameが空では出品できない' do
@@ -83,4 +84,4 @@ it 'description_of_itemが空では出品できない' do
 end
 end
 end
-
+end
