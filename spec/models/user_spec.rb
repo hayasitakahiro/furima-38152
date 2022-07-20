@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
+      
       it 'passwordが6文字以上であれば登録できる' do
         @user.password = '890iop'
         @user.password_confirmation = '890iop'
@@ -45,12 +46,12 @@ RSpec.describe User, type: :model do
     it "first_name_kanaがない場合は登録できないこと" do
       @user.first_name_kana = ''
       @user.valid?
-       expect(@user.errors.full_messages).to include "First_name_kana can't be blank"
+       expect(@user.errors.full_messages).to include ("First_name_kana can't be blank")
     end
     it "family_name_kanaがない場合は登録できないこと" do
       @user.family_name_kana = ''
       @user.valid?
-       expect(@user.errors.full_messages).to include "Family_name_kana can't be blank"
+       expect(@user.errors.full_messages).to include ("Family_name_kana can't be blank")
     end
     it "birth_dateがない場合は登録できないこと" do
       @user.birth_date = ''
