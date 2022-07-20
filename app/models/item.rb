@@ -6,20 +6,20 @@ class Item < ApplicationRecord
   belongs_to :burden_of_shipping_charge
   belongs_to :shipping_day
   has_one_attached :image
+  belongs_to :user
   
   validates :image, presence: true
-  validates :product_name, {presence: true, lengh: {maximum: 40}}
-  validates :description_of_item, {presence: true, lengh: {maximum: 1000}}
-  validates :category, presence: true
-  validates :product_condition, presence: true
-  validates :burden_of_shipping_charge, presence: true
-  validates :prefecture, presence: true
-  validates :shipping_day, presence: true
-  validates :price, presence: true
+  validates :product_name, presence: true
+  validates :description_of_item, presence: true
+  validates :category_id, numericality: { other_than: 1 }
+  validates :product_condition_id, numericality: { other_than: 1 }
+  validates :burden_of_shipping_charge_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :shipping_day_id, numericality: { other_than: 1 }
+  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
 
- 
+
   
-  validates :user_id, numericality: { other_than: 1 } 
 
  
 end
