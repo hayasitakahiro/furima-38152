@@ -23,9 +23,9 @@ it 'product_condition_idに「---」が選択されている場合は出品で�
    expect(@item.errors.full_messages).to include "Product condition must be other than 1"
 end
 it 'prefecture_idに「---」が選択されている場合は出品できない' do
-  @item.prefecture_id = '1'
+  @item.prefecture_id = '0'
   @item.valid?
-  expect(@item.errors.full_messages).to include "Prefecture must be other than 1"
+  expect(@item.errors.full_messages).to include "Prefecture must be other than 0"
 end
 it 'burden_of_shipping_charge_idに「---」が選択されている場合は出品できない' do
   @item.burden_of_shipping_charge_id = '1'
@@ -55,7 +55,6 @@ end
 it 'priceが9999999円を超えると出品できない' do
   @item.price = '10000000'
   @item.valid?
-  binding.pry
    expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
 end
 
