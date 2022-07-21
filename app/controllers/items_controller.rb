@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   
   
   def index
-    #@item = Item.all
+    @items = Item.all
   end
 
   def new
@@ -28,3 +28,13 @@ private
 
   
 end
+
+# @tweets
+# [tweet1,tweet2,tweet3]
+# tweet1{name: konichiwa}
+# tweet2{name: hello}
+# tweet3{name: konbanwa}
+
+# @tweets.each do |tweet|
+#   tweet.name
+# end
