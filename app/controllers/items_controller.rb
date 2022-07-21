@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  
-  
+
   def index
-    @items = Item.all
+    @items = Item.all.order(created_at: :desc)
   end
 
   def new
@@ -11,30 +10,19 @@ class ItemsController < ApplicationController
   end
 
   def create
-      @item = Item.new(item_params)
-   if @item.save
-    redirect_to root_path
-   else
-    render :new
-   end
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
-
-private
+  private
 
   def item_params
-  params.require(:item).permit(:image, :price, :product_name, :description_of_item, :category_id, :product_condition_id, :prefecture_id, :burden_of_shipping_charge_id, :shipping_day_id, :user_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :price, :product_name, :description_of_item, :category_id, :product_condition_id,
+                                 :prefecture_id, :burden_of_shipping_charge_id, :shipping_day_id, :user_id).merge(user_id: current_user.id)
   end
-
-  
 end
 
-# @tweets
-# [tweet1,tweet2,tweet3]
-# tweet1{name: konichiwa}
-# tweet2{name: hello}
-# tweet3{name: konbanwa}
-
-# @tweets.each do |tweet|
-#   tweet.name
-# end
