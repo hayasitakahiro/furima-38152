@@ -1,6 +1,6 @@
 class CreateShippinginfomations < ActiveRecord::Migration[6.0]
   def change
-    create_table :shippinginfomations do |t|
+    create_table :shipping_infomations do |t|
       t.string :postal_code, null: false
       t.string :city, null: false
       t.string :address, null: false
