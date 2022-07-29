@@ -13,14 +13,14 @@ class ShippingPurchase
   validates :address
   validates :token
   validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'number is invalid. Include half-width numbers' } 
-  validates :phone_number, format: { with: /\A[-]?[0-9]+(\.[0-9]+)?\z/}
-  validates :prefecture_id
+  
+  validates :prefecture_id, numericality: { other_than: 0 }
   validates :user_id
   validates :item_id
 
 end
 
-  user_iditem_id
+
    
     def save
       
