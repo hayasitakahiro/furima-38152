@@ -1,5 +1,5 @@
 class PurchaserecordsController < ApplicationController
-  before_action :move_to_signed_in, expect: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:index, :create]
   def index
     @shipping_purchase = ShippingPurchase.new
@@ -36,11 +36,7 @@ class PurchaserecordsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-  def move_to_signed_in
-    unless user_signed_in?
-      redirect_to '/users/sign_in'
-    end
-  end
+  
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 

@@ -1,12 +1,11 @@
 class ShippingPurchase
   include ActiveModel::Model
   attr_accessor :postal_code, :city, :address, :building_name, :phone_number, :purchase_record, :prefecture_id,
-  :burden_of_shipping_charge_id, :product_name, :user_id, :item_id
+  :burden_of_shipping_charge_id, :product_name, :user_id, :item_id, :token
 
   
-  attr_accessor :token
- 
- 
+  
+
   with_options presence: true do
   validates :city
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }

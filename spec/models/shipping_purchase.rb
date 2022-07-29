@@ -22,7 +22,12 @@ RSpec.describe ShippingPurchase, type: :model do
         @shipping_purchase.phone_number = '09012345679'
         expect(@shipping_purchase).to be_valid
       end
-      
+      it '建物名は空でも保存できる' do
+        @shipping_purchase.building_name = nil
+         expect(@shipping_purchase).to be_valid
+      end
+    
+    
     end
       context '内容に問題がある場合' do
       it '郵便番号が空では購入出来ない' do
@@ -77,7 +82,17 @@ RSpec.describe ShippingPurchase, type: :model do
             @shipping_purchase.valid?
             expect(@shipping_purchase.errors.full_messages).to include "Phone number number is invalid. Include half-width numbers"
           end
-     
-    end
+          it 'addressが空では購入出来ない' do
+            @shipping_purchase.address = ''
+            @shipping_purchase.valid?
+            expect(@shipping_purchase.errors.full_messages).to include "Address can't be blank"
+          end
+          it 'postal_codeはハイフンがなければ保存できない' do
+            @shipping_purchase.postal_code = ''
+            @shipping_purchase.valid?
+            expect(@shipping_purchase.errors.full_messages).to include "Postal code can't be blank", "Postal code is invalid. Include hyphen(-)"
+          end
+    
+        end
   end
 end
