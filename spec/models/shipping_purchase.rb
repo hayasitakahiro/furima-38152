@@ -47,12 +47,29 @@ RSpec.describe ShippingPurchase, type: :model do
         @shipping_purchase.valid?
         expect(@shipping_purchase.errors.full_messages).to include "City can't be blank"
       end
-      it '番地が空では購入出来ない' do
-        @shipping_purchase.address = ''
+      it 'user_idが空では購入出来ない' do
+        @shipping_purchase.user_id = nil
         @shipping_purchase.valid?
-        expect(@shipping_purchase.errors.full_messages).to include "Address can't be blank"
+        expect(@shipping_purchase.errors.full_messages).to include ""
       end
+      it 'item_idが空では購入出来ない' do
+        @shipping_purchase.item_id = nil
+        @shipping_purchase.valid?
+        expect(@shipping_purchase.errors.full_messages).to include ""
+      end
+      it 'tokenが空では購入出来ない' do
+          @shipping_purchase.token = nil
+          @shipping_purchase.valid?
+          expect(@shipping_purchase.errors.full_messages).to include "Token can't be blank"
+      end
+          it '10桁以上11桁以内の半角数値のみ保存可能なこと、' do
+            @shipping_purchase.prefecture_id = 'ああああ8888888888'
+            @shipping_purchase.valid?
+            expect(@shipping_purchase.errors.full_messages).to include ""
+          end
+         
       
-    end
+     
     end
   end
+end

@@ -1,23 +1,26 @@
 class ShippingPurchase
   include ActiveModel::Model
   attr_accessor :postal_code, :city, :address, :building_name, :phone_number, :purchase_record, :prefecture_id,
-   :price, :burden_of_shipping_charge_id, :product_name, :user_id, :item_id
+  :burden_of_shipping_charge_id, :product_name, :user_id, :item_id
 
   
   attr_accessor :token
  
-  validates :token, presence: true
+ 
   with_options presence: true do
-  validates :city, presence: true
+  validates :city
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
-  validates :address, presence: true
-  
-  validates :phone_number, format: { with: /\A0[0-9]+\z/, message: 'number is invalid. Include half-width numbers' } 
- 
-  validates :prefecture_id, presence: true
-  end
+  validates :address
+  validates :token
+  validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'number is invalid. Include half-width numbers' } 
+  validates :phone_number, format: { with: /\A[-]?[0-9]+(\.[0-9]+)?\z/}
+  validates :prefecture_id
+  validates :user_id
+  validates :item_id
 
- 
+end
+
+  user_iditem_id
    
     def save
       
