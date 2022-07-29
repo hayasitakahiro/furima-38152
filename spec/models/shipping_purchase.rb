@@ -68,12 +68,12 @@ RSpec.describe ShippingPurchase, type: :model do
             expect(@shipping_purchase.errors.full_messages).to include "Phone number number is invalid. Include half-width numbers"
           end
           it 'phone_numberは９桁以下では登録できない' do
-            @shipping_purchase.phone_number = 'ああああ8888888888'
+            @shipping_purchase.phone_number = '12345678'
             @shipping_purchase.valid?
             expect(@shipping_purchase.errors.full_messages).to include "Phone number number is invalid. Include half-width numbers"
           end
           it 'phone_numberは11桁以内ではないと購入出来ない' do
-            @shipping_purchase.phone_number = 'ああああ8888888888'
+            @shipping_purchase.phone_number = '111111111111'
             @shipping_purchase.valid?
             expect(@shipping_purchase.errors.full_messages).to include "Phone number number is invalid. Include half-width numbers"
           end
