@@ -1,5 +1,5 @@
 class PurchaserecordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:index, :create]
   def index
     @shipping_purchase = ShippingPurchase.new
@@ -9,12 +9,11 @@ class PurchaserecordsController < ApplicationController
       end
   end
 
-  
  
   def create
     @shipping_purchase = ShippingPurchase.new(shipping_purchase_params)
     
-   
+    
    
     if @shipping_purchase.valid?
       pay_item
@@ -34,9 +33,11 @@ class PurchaserecordsController < ApplicationController
   end
   
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
-  
+
+
+ 
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
