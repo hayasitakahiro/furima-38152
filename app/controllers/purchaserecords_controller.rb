@@ -1,5 +1,5 @@
 class PurchaserecordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:index, :create]
   def index
     @shipping_purchase = ShippingPurchase.new
@@ -34,6 +34,7 @@ class PurchaserecordsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:item_id])
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 
