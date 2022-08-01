@@ -26,7 +26,7 @@ end
       purchase_record = PurchaseRecord.create(item_id: item_id, user_id: user_id)
       
       shipping = ShippingInfomation.create!(postal_code: postal_code, city: city, address: address, building_name: building_name,
-      phone_number: phone_number, purchase_record_id: purchase_record.id, prefecture_id: prefecture_id)
+      phone_number: phone_number, purchase_record_id: purchase_record.id, prefecture_id: prefecture_id, token: token)
     end
   end
   
